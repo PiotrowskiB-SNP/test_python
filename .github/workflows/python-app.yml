@@ -39,6 +39,6 @@ jobs:
       run: |
         pytest
     - name: Just display name
-      run: echo '$GITHUB_ACTION $GITHUB_REPOSITORY $GITHUB_REPOSITORY_OWNER'
+      run: echo '${{GITHUB_ACTION}} ${{GITHUB_REPOSITORY}} ${{GITHUB_REPOSITORY_OWNER}}'
     - name: Finished
       run: echo 'Finished'
