@@ -2,7 +2,6 @@
 import flask
 import uuid
 import random
-import main as main
 
 
 COUNTER_NAME = 'counter'
@@ -13,7 +12,7 @@ app.secret_key = str(uuid.uuid4())
 
 @app.route('/')
 def go_home_param():
-    return f'Home sweet home!!!!'
+    return 'Home sweet home!!!!'
 
 
 def helper_fun() -> int:
