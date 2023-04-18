@@ -50,7 +50,7 @@ def show_users():
 
 @app.route('/user(<username>)')
 def show_user(username: str):
-    return f'Site for user {flask.escape(uslername)}'
+    return f'Site for user {flask.escape(username)}'
 
 
 # for browser request will fail - browsers use GET, but for postman or something simillar it would return error 418 - I'm a teapot
