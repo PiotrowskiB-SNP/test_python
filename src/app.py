@@ -2,7 +2,7 @@
 import flask
 import uuid
 import random
-import main
+import main as main
 
 
 COUNTER_NAME = 'counter'
