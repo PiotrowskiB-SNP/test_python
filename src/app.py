@@ -2,7 +2,7 @@
 import flask
 import uuid
 import random
-
+import main
 
 COUNTER_NAME = 'counter'
 
@@ -28,7 +28,9 @@ def some_other_helper(x: int, y: int) -> bool:
 
 @app.route('/something')
 def go_somewhere():
-    return 'Somewhere -> ' + str(helper_fun()) + ' <- here. \t And something else: ' + str(some_other_helper(0, random.randint(-2, 2)))
+    return 'Somewhere -> ' + str(helper_fun())\
+        + ' <- here. \t And something else: ' + \
+        str(some_other_helper(0, random.randint(-2, 2)))
 
 
 @app.route('/something/<anything>')
@@ -52,7 +54,22 @@ def show_user(username: str):
     return f'Site for user {flask.escape(username)}'
 
 
-# for browser request will fail - browsers use GET, but for postman or something simillar it would return error 418 - I'm a teapot
+@app.route('/switch')
+def show_switch():
+    match random.randint(0, 5):
+        case 1:
+            return main.fun_1()
+        case 2:
+            return main.fun_2()
+        case 3:
+            return main.fun_3()
+        case _:
+            return main.fun_0()
+
+# for browser request will fail - browsers use GET, but for postman
+# or something simillar it would return error 418 - I'm a teapot
+
+
 @app.route('/err', methods=['POST'])
 def navigate_error():
     return flask.Response(status=418)

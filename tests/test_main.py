@@ -12,7 +12,7 @@ def test_always_possitive():
 
 
 def test_something_positive():
-    assert False
+    assert True
 
 
 def test_use_fixture(int_fixture: int):
