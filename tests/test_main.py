@@ -1,3 +1,4 @@
+from src import complicated_script
 import pytest
 
 
@@ -14,5 +15,13 @@ def test_something_positive():
     assert True
 
 
-def test_use_fixture(int_fixture):
+def test_use_fixture(int_fixture: int):
     assert int_fixture + 15 == 16
+
+
+def test_complicated_script():
+    assert len(complicated_script()) > 0
+
+
+def test_nothing():
+    assert 1 == 1
