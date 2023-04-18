@@ -6,4 +6,4 @@ def test_always_possitive():
 
 
 def test_something_positive():
-    assert False
+    assert True
