@@ -1,5 +1,5 @@
-from src import complicated_script
 import pytest
+from src import some_other_helper
 
 
 @pytest.fixture
@@ -19,9 +19,9 @@ def test_use_fixture(int_fixture: int):
     assert int_fixture + 15 == 16
 
 
-def test_complicated_script():
-    assert len(complicated_script()) > 0
-
-
 def test_nothing():
     assert 1 == 1
+
+
+def test_helper():
+    assert some_other_helper(5, 5)
