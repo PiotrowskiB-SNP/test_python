@@ -6,7 +6,7 @@ def int_returner() -> int:
 
 
 def some_other_helper(x: int, y: int) -> bool:
-    return x == y
+    return x - 1 == y - 1
 
 
 def helper_fun(flask_session) -> int:
