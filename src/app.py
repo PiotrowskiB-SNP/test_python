@@ -27,7 +27,7 @@ def go_somewhere_with_param(anything):
 
 @app.route('/user(<int:user_id>)')
 def go_user(user_id):
-    return f'User {flask.escape(user_id)}'
+    return f'User <h1>{flask.escape(user_id)}</h1>'
 
 
 @app.route('/user')
