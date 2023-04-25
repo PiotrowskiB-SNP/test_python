@@ -1,11 +1,8 @@
-# import flask_cors
 import flask
 import uuid
 import random
-import main
+from .helpers import some_other_helper, helper_fun
 
-
-COUNTER_NAME = 'counter'
 
 app = flask.Flask(__name__)
 app.secret_key = str(uuid.uuid4())
@@ -13,23 +10,14 @@ app.secret_key = str(uuid.uuid4())
 
 @app.route('/')
 def go_home_param():
-    return f'Home sweet home!!!!'
-
-
-def helper_fun() -> int:
-    # save and read data from browser cache
-    counter_value = flask.session.get(COUNTER_NAME, 0) + 1
-    flask.session[COUNTER_NAME] = counter_value
-    return counter_value
-
-
-def some_other_helper(x: int, y: int) -> bool:
-    return x == y
+    return 'Home sweet home!!!!'
 
 
 @app.route('/something')
 def go_somewhere():
-    return 'Somewhere -> ' + str(helper_fun()) + ' <- here. \t And something else: ' + str(some_other_helper(0, random.randint(-2, 2)))
+    return 'Somewhere -> ' + str(helper_fun(flask.session))\
+        + ' <- here. \t And something else: ' + \
+        str(some_other_helper(0, random.randint(-2, 2)))
 
 
 @app.route('/something/<anything>')
@@ -39,7 +27,7 @@ def go_somewhere_with_param(anything):
 
 @app.route('/user(<int:user_id>)')
 def go_user(user_id):
-    return f'User {flask.escape(user_id)}'
+    return f'User <h1>{flask.escape(user_id)}</h1>'
 
 
 @app.route('/user')
@@ -53,16 +41,13 @@ def show_user(username: str):
     return f'Site for user {flask.escape(username)}'
 
 
-# for browser request will fail - browsers use GET, but for postman or something simillar it would return error 418 - I'm a teapot
+# for browser request will fail - browsers use GET, but for postman
+# or something simillar it would return error 418 - I'm a teapot
 @app.route('/err', methods=['POST'])
 def navigate_error():
     return flask.Response(status=418)
 
 
-def int_returner() -> int:
-    return 37
-
-
 if __name__ == '__main__':
-
-    app.run(host='0.0.0.0')  # execute app on localhost
+    # execute app on localhost - for local testing only
+    app.run(host='0.0.0.0')
