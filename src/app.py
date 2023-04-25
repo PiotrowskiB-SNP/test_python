@@ -10,7 +10,7 @@ app.secret_key = str(uuid.uuid4())
 
 @app.route('/')
 def go_home_param():
-    return 'Home sweet home!!!! \n I like it <h1>Seweet</h1>'
+    return 'Home <h2>sweet</h2> home!!!! \n I like it <h1>Seweet</h1>'
 
 
 @app.route('/something')
